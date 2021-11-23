@@ -18,7 +18,7 @@ def get_time(time_string):
 
 class NorenApiPy(NorenApi):
     def __init__(self):
-        NorenApi.__init__(self, host='https://shoonyatrade.finvasia.com/NorenWClientWeb/', websocket='wss://shoonyatrade.finvasia.com/NorenWS/')
+        NorenApi.__init__(self, host='https://shoonyatrade.finvasia.com/NorenWClientTP/', websocket='wss://shoonyatrade.finvasia.com/NorenWSTP/')
 
     symboldata = {}
 
