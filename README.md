@@ -19,6 +19,7 @@ to build this package and install it on your server please use
 Symbols
 - [searchscrip](#md-searchscrip)
 - [get_security_info](#md-get_security_info)
+- [get_quotes](#md-get_quotes)
 
 Orders and Trades
 - [place_order](#md-place_order)
@@ -104,7 +105,7 @@ retrieves the positions cf and day as a list
 |  No Parameters  |
 
 #### <a name="md-searchscrip"></a> searchscrip(exchange, searchtext):
-search for scrip or contract and its properties 
+search for scrip or contract and its properties  
 
 | Param | Type | Optional |Description |
 | --- | --- | --- | ---|
@@ -187,7 +188,79 @@ the response is as follows,
 | token| ```string``` | True |  |
 | prcftr_d| ```string``` | True |  |
 
-#### <a name="md-start_websocket"></a> start_websocket()
+#### <a name="md-get_quotes"></a> get_quotes(exchange, token):
+gets the complete details and its properties 
+
+| Param | Type | Optional |Description |
+| --- | --- | --- | ---|
+| exchange | ```string``` | True | Exchange NSE  / NFO / BSE / CDS |
+| token | ```string``` | True | token number of the contract|
+
+the response is as follows,
+
+| Param | Type | Optional |Description |
+| --- | --- | --- | ---|
+| stat | ```string``` | True | ok or Not_ok |
+| values | ```string``` | True | properties of the scrip |
+| emsg | ```string``` | False | Error Message |
+
+| Param | Type | Optional |Description |
+| --- | --- | --- | ---|
+| exch | ```string``` | True | Exchange NSE  / NFO / BSE / CDS |
+| tsym | ```string``` | True | Trading Symbol is the readable Unique id of contract/scrip |
+| cname | ```string``` | True | Company Name |
+symname| ```string``` | True |Symbol Name |
+seg| ```string``` | True |Segment |
+| instname| ```string``` | True |Instrument Name |
+| isin| ```string``` | True |ISIN |
+| pp| ```string``` | True |Price precision |
+| ls| ```string``` | True |Lot Size  |
+| ti| ```string``` | True |Tick Size  |
+| mult| ```string``` | True |Multiplier |
+| uc| ```string``` | True |Upper circuit limitlc |
+| lc| ```string``` | True |Lower circuit limit |
+| prcftr_d| ```string``` | True |Price factor((GN / GD) * (PN/PD)) |
+| token| ```string``` | True |Token |
+| lp| ```string``` | True |LTP |
+| o| ```string``` | True |Open Price |
+| h| ```string``` | True |Day High Price |
+| l| ```string``` | True |Day Low Price |
+| v| ```string``` | True |Volume |
+| ltq| ```string``` | True |Last trade quantity |
+| ltt| ```string``` | True |Last trade time |
+| bp1| ```string``` | True |Best Buy Price 1 |
+| sp1| ```string``` | True |Best Sell Price 1 |
+| bp2| ```string``` | True |Best Buy Price 2 |
+| sp2| ```string``` | True |Best Sell Price 2 |
+| bp3| ```string``` | True |Best Buy Price 3 |
+| sp3| ```string``` | True |Best Sell Price 3 |
+| bp4| ```string``` | True |Best Buy Price 4 |
+| sp4| ```string``` | True |Best Sell Price 4 |
+| bp5| ```string``` | True |Best Buy Price 5 |
+| sp5| ```string``` | True |Best Sell Price 5 |
+| bq1| ```string``` | True |Best Buy Quantity 1 |
+| sq1| ```string``` | True |Best Sell Quantity 1 |
+| bq2| ```string``` | True |Best Buy Quantity 2 |
+| sq2| ```string``` | True |Best Sell Quantity 2 |
+| bq3| ```string``` | True |Best Buy Quantity 3 |
+| sq3| ```string``` | True |Best Sell Quantity 3 |
+| bq4| ```string``` | True |Best Buy Quantity 4 |
+| sq4| ```string``` | True |Best Sell Quantity 4 |
+| bq5| ```string``` | True |Best Buy Quantity 5 |
+| sq5| ```string``` | True |Best Sell Quantity 5 |
+| bo1| ```string``` | True |Best Buy Orders 1 |
+| so1| ```string``` | True |Best Sell Orders 1 |
+| bo2| ```string``` | True |Best Buy Orders 2 |
+| so2| ```string``` | True |Best Sell Orders 2 |
+| bo3| ```string``` | True |Best Buy Orders 3 |
+| so3| ```string``` | True |Best Sell Orders 3 |
+| bo4| ```string``` | True |Best Buy Orders 4 |
+| so4| ```string``` | True |Best Sell Orders 4 |
+| bo5| ```string``` | True |Best Buy Orders 5 |
+| so5| ```string``` | True |Best Sell Orders 5|
+ 
+ 
+ <a name="md-start_websocket"></a> start_websocket()
 starts the websocket
 
 | Param | Type | Optional |Description |
@@ -204,10 +277,7 @@ get order and trade update callbacks
 send a list of instruments to watch
 | Param | Type | Optional |Description |
 | --- | --- | --- | -----|
-| instruments | ```list``` | False | list of instruments [NSE\|22,CDS\|1] |
-
-
-#### <a name="md-unsubscribe"></a> unsubscribe()
+| instruments | ```list``` | False | list of instruments [NSE\|22,CDS\|1] || ```string``` | True |#### <a name="md-unsubscribe"></a> unsubscribe()
 send a list of instruments to stop watch
 
 ****
@@ -244,7 +314,11 @@ This Example shows API usage for finding scrips and its properties
 
 ### Search Scrips
 The call can be made to get the exchange provided token for a scrip or alternately can search for a partial string to get a list of matching scrips
-
+Trading Symbol:
+oSymbolName + ExpDate + 'F' for all data having InstrumentName starting with FUT
+oSymbolName + ExpDate + 'P' + StrikePrice for all data having InstrumentName starting with OPT and with OptionType PE
+oSymbolName + ExpDate + 'C' + StrikePrice for all data having InstrumentName starting with OPT and with OptionType C
+For MCX, F to be ignored for FUT instruments
 ```
 api.searchscrip(exchange='NSE', searchtext='REL')
 ```

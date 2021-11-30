@@ -70,6 +70,7 @@ ret = api.login(userid = cred['user'], password = cred['pwd'], twoFA=cred['facto
 if ret != None:   
     while True:
         print('f => find symbol')    
+        print('m => get quotes')
         print('p => contract info n properties')    
         print('v => get 1 min market data')
         print('s => start_websocket')
@@ -105,7 +106,11 @@ if ret != None:
             ret = api.get_security_info(exchange=exch, token=token)
             print(ret)
 
-            
+        elif prompt1 == 'm':
+            exch  = 'NSE'
+            token = '22'
+            ret = api.get_quotes(exchange=exch, token=token)
+            print(ret)
         elif prompt1 == 's':
             if socket_opened == True:
                 print('websocket already opened')
