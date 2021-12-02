@@ -286,11 +286,9 @@ First configure the endpoints in the api_helper constructor.
 Thereon provide your credentials and login as follows.
 
 ```python
-from NorenRestApiPy.NorenApi import PriceType, BuyorSell, ProductType
-from api_helper import ShoonyaApiPy, get_time
+from api_helper import ShoonyaApiPy
 import logging
-import hashlib
-
+#enable dbug to see request and responses
 logging.basicConfig(level=logging.DEBUG)
 
 #start of our program
