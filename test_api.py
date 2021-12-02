@@ -1,4 +1,4 @@
-from api_helper import StarApiPy, get_time
+from api_helper import ShoonyaApiPy, get_time
 import datetime
 import logging
 import time
@@ -8,7 +8,7 @@ import hashlib
 logging.basicConfig(level=logging.DEBUG)
 
 #start of our program
-api = StarApiPy()
+api = ShoonyaApiPy()
 
 #credentials
 user    = <uid>

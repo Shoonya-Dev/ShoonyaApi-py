@@ -1,6 +1,6 @@
-# NorenApi
+# ShoonyaApi
 
-Api used to connect to NorenOMS
+Api used to connect to ShoonyaOMS
 ****
 
 ## Build
@@ -13,7 +13,7 @@ to build this package and install it on your server please use
 ****
 
 ## API 
-```NorenApi```
+```ShoonyaApi```
 - [login](#md-login)
 
 Symbols
@@ -287,7 +287,7 @@ Thereon provide your credentials and login as follows.
 
 ```python
 from NorenRestApiPy.NorenApi import PriceType, BuyorSell, ProductType
-from api_helper import NorenApiPy, get_time
+from api_helper import ShoonyaApiPy, get_time
 import logging
 import hashlib
 

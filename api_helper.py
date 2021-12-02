@@ -16,7 +16,7 @@ def get_time(time_string):
     return time.mktime(data)
 
 
-class NorenApiPy(NorenApi):
+class ShoonyaApiPy(NorenApi):
     def __init__(self):
         NorenApi.__init__(self, host='https://shoonyatrade.finvasia.com/NorenWClientTP/', websocket='wss://shoonyatrade.finvasia.com/NorenWSTP/')
 

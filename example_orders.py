@@ -1,5 +1,5 @@
 from NorenRestApiPy.NorenApi import PriceType, BuyorSell, ProductType
-from api_helper import NorenApiPy, get_time
+from api_helper import ShoonyaApiPy, get_time
 import datetime
 import logging
 import time
@@ -43,7 +43,7 @@ def open_callback():
 
 
 #start of our program
-api = NorenApiPy()
+api = ShoonyaApiPy()
 
 #use following if yaml isnt used
 #user    = <uid>
