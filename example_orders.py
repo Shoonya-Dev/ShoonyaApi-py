@@ -5,7 +5,7 @@ import logging
 import time
 import yaml
 import pandas as pd
-
+ 
 logging.basicConfig(level=logging.DEBUG)
 
 #flag to tell us if the websocket is open
