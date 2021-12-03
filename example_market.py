@@ -29,7 +29,7 @@ def event_handler_quote_update(message):
     #c   Close price
     #ap  Average trade price
 
-    print("quote event: " + str(message))
+    print("quote event: {0}".format(time.strftime('%d-%m-%Y %H:%M:%S')) + str(message))
     
 
 def open_callback():
