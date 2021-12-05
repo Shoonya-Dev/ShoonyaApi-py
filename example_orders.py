@@ -67,7 +67,7 @@ if ret != None:
         print('p => place order')
         print('m => modify order')
         print('c => cancel order')
-        print('h => order history')
+        print('y => order history')
         print('o => get order book')
         print('h => get holdings')
         print('k => get positions')
@@ -77,16 +77,16 @@ if ret != None:
         prompt1=input('what shall we do? ').lower()        
             
         if prompt1 == 'p':
-            ret = api.place_order(buy_or_sell=BuyorSell.Buy, product_type=ProductType.Delivery,
+            ret = api.place_order(buy_or_sell='B', product_type='C',
                         exchange='NSE', tradingsymbol='INFY-EQ', 
-                        quantity=1, discloseqty=0,price_type=PriceType.Limit, price=150000, trigger_price=None,
+                        quantity=1, discloseqty=0,price_type='LMT', price=1500.00, trigger_price=None,
                         retention='DAY', remarks='my_order_001')
             print(ret)
 
         elif prompt1 == 'm':
             orderno=input('Enter orderno:').lower()        
             ret = api.modify_order(exchange='NSE', tradingsymbol='INFY-EQ', orderno=orderno,
-                                   newquantity=2, newprice_type=PriceType.Limit, newprice=150500)
+                                   newquantity=2, newprice_type='LMT', newprice=1505.00)
             print(ret)
 
         elif prompt1 == 'c':
@@ -94,7 +94,7 @@ if ret != None:
             ret = api.cancel_order(orderno=orderno)
             print(ret)
 
-        elif prompt1 == 'h':
+        elif prompt1 == 'y':
             orderno=input('Enter orderno:').lower()        
             ret = api.single_order_history(orderno=orderno)
             print(ret)
