@@ -725,7 +725,7 @@ api.subscribe(['NSE|22', 'BSE|522032'])
 ```
     Place a Bracket Order as follows
 ```
-    api.place_order(buy_or_sell='B', product_type='H',
+    api.place_order(buy_or_sell='B', product_type='B',
                         exchange='NSE', tradingsymbol='INFY-EQ', 
                         quantity=1, discloseqty=0,price_type='LMT', price=1500, trigger_price=None,
                         retention='DAY', remarks='my_order_001', bookloss_price = 1490, bookprofit_price = 1510)
