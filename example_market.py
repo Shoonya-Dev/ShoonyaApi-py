@@ -72,6 +72,8 @@ if ret != None:
         print('m => get quotes')
         print('p => contract info n properties')    
         print('v => get 1 min market data')
+        print('t => get today 1 min market data')
+        print('d => get daily data')
         print('s => start_websocket')
         print('q => quit')
 
@@ -87,6 +89,13 @@ if ret != None:
             
             df = pd.DataFrame.from_dict(ret)
             print(df)            
+            
+        elif prompt1 == 't':
+            ret = api.get_time_price_series(exchange='NSE', token='22')
+            
+            df = pd.DataFrame.from_dict(ret)
+            print(df)            
+            
 
         elif prompt1 == 'f':
             exch  = 'NFO'
@@ -98,6 +107,12 @@ if ret != None:
                 symbols = ret['values']
                 for symbol in symbols:
                     print('{0} token is {1}'.format(symbol['tsym'], symbol['token']))
+
+        elif prompt1 == 'd':
+            exch  = 'CDS'
+            tsym = 'RELIANCE-EQ'
+            ret = api.get_daily_price_series(exchange=exch, tradingsymbol=tsym, startdate=0)
+            print(ret)
 
         elif prompt1 == 'p':
             exch  = 'NSE'
