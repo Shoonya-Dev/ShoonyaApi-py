@@ -139,6 +139,8 @@ if ret != None:
             print(ret)
 
         else:
+            ret = api.logout()
+            print(ret)
             print('Fin') #an answer that wouldn't be yes or no
             break
 

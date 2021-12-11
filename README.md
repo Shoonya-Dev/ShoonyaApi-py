@@ -15,6 +15,7 @@ to build this package and install it on your server please use
 ## API 
 ```ShoonyaApi```
 - [login](#md-login)
+- [logout](#md-logout)
 
 Symbols
 - [searchscrip](#md-searchscrip)
@@ -58,6 +59,13 @@ connect to the broker, only once this function has returned successfully can any
 | vendor_code | ```string``` | False | vendor code shared  |
 | api_secret | ```string``` | False | your secret   |
 | imei | ```string``` | False | imei identification |
+
+#### <a name="md-logout"></a> logout()
+Terminate the session
+
+| Param | Type | Optional |Description |
+| --- | --- | --- | ---|
+|  No Parameters  |
 
 #### <a name="md-place_order"></a> place_order(buy_or_sell, product_type,exchange, tradingsymbol, quantity, discloseqty, price_type, price=0.0, trigger_price=None, retention='DAY', amo='NO', remarks=None)
 place an order to oms
@@ -556,39 +564,40 @@ Subscription Acknowledgement:
 |t|ok|‘ok’ represents order update subscription acknowledgement|
 
 Order Update subscription Updates :
-|Json Fields|Possible value| Optional |Description|
+
+|Json Fields|Possible value| Description|
 |t|om|‘om’ represents touchline feed|
-|norenordno|||Noren Order Number|
-|uid|||User Id|
-|actid|||Account ID|
-|exch|||Exchange|
-|tsym|||Trading symbol|
-|qty|||Order quantity|
-|prc|||Order Price|
-|prd|||Product|
-|status|||Order status (New, Replaced,  Complete, Rejected etc)|
-|reporttype|||Order event for which this message is sent out. (Fill, Rejected, Canceled)|
-|trantype|||Order transaction type, buy or sell|
-|prctyp|||Order price type (LMT, MKT, SL-LMT, SL-MKT)|
-|ret|||Order retention type (DAY, EOS, IOC,...)|
-|fillshares|||Total Filled shares for this order|
-|avgprc|||Average fill price|
-|fltm|||Fill Time(present only when reporttype is Fill)|
-|flid|||Fill ID (present only when reporttype is Fill)|
-|flqty|||Fill Qty(present only when reporttype is Fill)|
-|flprc|||Fill Price(present only when reporttype is Fill)|
-|rejreason|||Order rejection reason, if rejected|
-|exchordid|||Exchange Order ID|
-|cancelqty|||Canceled quantity, in case of canceled order|
-|remarks|||User added tag, while placing order|
-|dscqty|||Disclosed quantity|
-|trgprc|||Trigger price for SL orders|
-|snonum|||This will be present for child orders in case of cover and bracket orders, if present needs to be sent during exit|
-|snoordt|||This will be present for child orders in case of cover and bracket orders, it will indicate whether the order is profit or stoploss|
-|blprc|||This will be present for cover and bracket parent order. This is the differential stop loss trigger price to be entered. |
-|bpprc|||This will be present for bracket parent order. This is the differential profit price to be entered. |
-|trailprc|||This will be present for cover and bracket parent order. This is required if trailing ticks is to be enabled.|
-|exch_tm|||This will have the exchange update time|
+|norenordno| |Noren Order Number|
+|uid| |User Id|
+|actid| |Account ID|
+|exch| |Exchange|
+|tsym| |Trading symbol|
+|qty| |Order quantity|
+|prc| |Order Price|
+|prd| |Product|
+|status| |Order status (New, Replaced,  Complete, Rejected etc)|
+|reporttype| |Order event for which this message is sent out. (Fill, Rejected, Canceled)|
+|trantype| |Order transaction type, buy or sell|
+|prctyp| |Order price type (LMT, MKT, SL-LMT, SL-MKT)|
+|ret| |Order retention type (DAY, EOS, IOC,...)|
+|fillshares| |Total Filled shares for this order|
+|avgprc| |Average fill price|
+|fltm| |Fill Time(present only when reporttype is Fill)|
+|flid| |Fill ID (present only when reporttype is Fill)|
+|flqty| |Fill Qty(present only when reporttype is Fill)|
+|flprc| |Fill Price(present only when reporttype is Fill)|
+|rejreason| |Order rejection reason, if rejected|
+|exchordid| |Exchange Order ID|
+|cancelqty| |Canceled quantity, in case of canceled order|
+|remarks| |User added tag, while placing order|
+|dscqty| |Disclosed quantity|
+|trgprc| |Trigger price for SL orders|
+|snonum| |This will be present for child orders in case of cover and bracket orders, if present needs to be sent during exit|
+|snoordt| |This will be present for child orders in case of cover and bracket orders, it will indicate whether the order is profit or stoploss|
+|blprc| |This will be present for cover and bracket parent order. This is the differential stop loss trigger price to be entered. |
+|bpprc| |This will be present for bracket parent order. This is the differential profit price to be entered. |
+|trailprc| |This will be present for cover and bracket parent order. This is required if trailing ticks is to be enabled.|
+|exch_tm| |This will have the exchange update time|
 
 
 #### <a name="md-subscribe"></a> subscribe([instruments])
