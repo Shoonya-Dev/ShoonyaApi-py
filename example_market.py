@@ -74,6 +74,7 @@ if ret != None:
         print('v => get 1 min market data')
         print('t => get today 1 min market data')
         print('d => get daily data')
+        print('o => get option chain')
         print('s => start_websocket')
         print('q => quit')
 
@@ -109,7 +110,7 @@ if ret != None:
                     print('{0} token is {1}'.format(symbol['tsym'], symbol['token']))
 
         elif prompt1 == 'd':
-            exch  = 'CDS'
+            exch  = 'NSE'
             tsym = 'RELIANCE-EQ'
             ret = api.get_daily_price_series(exchange=exch, tradingsymbol=tsym, startdate=0)
             print(ret)
@@ -124,6 +125,11 @@ if ret != None:
             exch  = 'NSE'
             token = '22'
             ret = api.get_quotes(exchange=exch, token=token)
+            print(ret)
+        elif prompt1 == 'o':
+            exch  = 'NFO'
+            tsym = 'COFORGE30DEC21F'
+            ret = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=3500, count=2)
             print(ret)
         elif prompt1 == 's':
             if socket_opened == True:

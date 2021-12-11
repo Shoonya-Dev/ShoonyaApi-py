@@ -21,7 +21,7 @@ Symbols
 - [get_security_info](#md-get_security_info)
 - [get_quotes](#md-get_quotes)
 - [get_time_price_series](#md-get_time_price_series)
-- [get_option_chain](#md-get_option_chain)
+- [get_option_chain](#md-get_optionchain)
 
 Orders and Trades
 - [place_order](#md-place_order)
@@ -510,14 +510,14 @@ the response is as follows,
 | inoi | ```string``` | True | Interval oi change  |
 | oi | ```string``` | True | oi  |
 
-#### <a name="md-get_optionchain"></a> get_optionchain(exchange, tradingsymbol, strike, count):
+#### <a name="md-get_optionchain"></a> get_option_chain(exchange, tradingsymbol, strikeprice, count):
 gets the chart date for the symbol
 
 | Param | Type | Optional |Description |
 | --- | --- | --- | ---|
 | exchange | ```string``` | False | Exchange (UI need to check if exchange in NFO / CDS / MCX / or any other exchange which has options, if not don't allow)|
 | tradingsymbol | ```string``` | False | Trading symbol of any of the option or future. Option chain for that underlying will be returned. (use url encoding to avoid special char error for symbols like M&M)|
-| strike | ```float``` | False | Mid price for option chain selection|
+| strikeprice | ```float``` | False | Mid price for option chain selection|
 | count | ```int``` | True | Number of strike to return on one side of the mid price for PUT and CALL.  (example cnt is 4, total 16 contracts will be returned, if cnt is is 5 total 20 contract will be returned)|
 
 the response is as follows,
