@@ -559,45 +559,49 @@ starts the websocket
 
 #### <a name="md-subscribe_orders"></a> subscribe_orders()
 get order and trade update callbacks
+
 Subscription Acknowledgement:
-|Json Fields|Possible value|Description|
-|t|ok|‘ok’ represents order update subscription acknowledgement|
+
+| Json Fields| Possible value| Description| 
+| --- | --- | --- |
+| t  |  ok |  ‘ok’ represents order update subscription acknowledgement | 
 
 Order Update subscription Updates :
 
-|Json Fields|Possible value| Description|
-|t|om|‘om’ represents touchline feed|
-|norenordno| |Noren Order Number|
-|uid| |User Id|
-|actid| |Account ID|
-|exch| |Exchange|
-|tsym| |Trading symbol|
-|qty| |Order quantity|
-|prc| |Order Price|
-|prd| |Product|
-|status| |Order status (New, Replaced,  Complete, Rejected etc)|
-|reporttype| |Order event for which this message is sent out. (Fill, Rejected, Canceled)|
-|trantype| |Order transaction type, buy or sell|
-|prctyp| |Order price type (LMT, MKT, SL-LMT, SL-MKT)|
-|ret| |Order retention type (DAY, EOS, IOC,...)|
-|fillshares| |Total Filled shares for this order|
-|avgprc| |Average fill price|
-|fltm| |Fill Time(present only when reporttype is Fill)|
-|flid| |Fill ID (present only when reporttype is Fill)|
-|flqty| |Fill Qty(present only when reporttype is Fill)|
-|flprc| |Fill Price(present only when reporttype is Fill)|
-|rejreason| |Order rejection reason, if rejected|
-|exchordid| |Exchange Order ID|
-|cancelqty| |Canceled quantity, in case of canceled order|
-|remarks| |User added tag, while placing order|
-|dscqty| |Disclosed quantity|
-|trgprc| |Trigger price for SL orders|
-|snonum| |This will be present for child orders in case of cover and bracket orders, if present needs to be sent during exit|
-|snoordt| |This will be present for child orders in case of cover and bracket orders, it will indicate whether the order is profit or stoploss|
-|blprc| |This will be present for cover and bracket parent order. This is the differential stop loss trigger price to be entered. |
-|bpprc| |This will be present for bracket parent order. This is the differential profit price to be entered. |
-|trailprc| |This will be present for cover and bracket parent order. This is required if trailing ticks is to be enabled.|
-|exch_tm| |This will have the exchange update time|
+ | Json Fields | Possible value |  Description | 
+ | --- | --- | --- |
+ | t | om | ‘om’ represents touchline feed | 
+ | norenordno |   | Noren Order Number | 
+ | uid |   | User Id | 
+ | actid |   | Account ID | 
+ | exch |   | Exchange | 
+ | tsym |   | Trading symbol | 
+ | qty |   | Order quantity | 
+ | prc |   | Order Price | 
+ | prd |   | Product | 
+ | status |   | Order status (New, Replaced,  Complete, Rejected etc) | 
+ | reporttype |   | Order event for which this message is sent out. (Fill, Rejected, Canceled) | 
+ | trantype |   | Order transaction type, buy or sell | 
+ | prctyp |   | Order price type (LMT, MKT, SL-LMT, SL-MKT) | 
+ | ret |   | Order retention type (DAY, EOS, IOC,...) | 
+ | fillshares |   | Total Filled shares for this order | 
+ | avgprc |   | Average fill price | 
+ | fltm |   | Fill Time(present only when reporttype is Fill) | 
+ | flid |   | Fill ID (present only when reporttype is Fill) | 
+ | flqty |   | Fill Qty(present only when reporttype is Fill) | 
+ | flprc |   | Fill Price(present only when reporttype is Fill) | 
+ | rejreason |   | Order rejection reason, if rejected | 
+ | exchordid |   | Exchange Order ID | 
+ | cancelqty |   | Canceled quantity, in case of canceled order | 
+ | remarks |   | User added tag, while placing order | 
+ | dscqty |   | Disclosed quantity | 
+ | trgprc |   | Trigger price for SL orders | 
+ | snonum |   | This will be present for child orders in case of cover and bracket orders, if present needs to be sent during exit | 
+ | snoordt |   | This will be present for child orders in case of cover and bracket orders, it will indicate whether the order is profit or stoploss | 
+ | blprc |   | This will be present for cover and bracket parent order. This is the differential stop loss trigger price to be entered.  | 
+ | bpprc |   | This will be present for bracket parent order. This is the differential profit price to be entered.  | 
+ | trailprc |   | This will be present for cover and bracket parent order. This is required if trailing ticks is to be enabled. | 
+ | exch_tm |   | This will have the exchange update time | 
 
 
 #### <a name="md-subscribe"></a> subscribe([instruments])
@@ -605,11 +609,12 @@ send a list of instruments to watch
 
 t='tk' is sent once on subscription for each instrument. this will have all the fields with the most recent value
 thereon t='tf' is sent for fields that have changed.
-
+```
 For example
 quote event: 03-12-2021 11:54:44{'t': 'tk', 'e': 'NSE', 'tk': '11630', 'ts': 'NTPC-EQ', 'pp': '2', 'ls': '1', 'ti': '0.05', 'lp': '118.55', 'h': '118.65', 'l': '118.10', 'ap': '118.39', 'v': '162220', 'bp1': '118.45', 'sp1': '118.50', 'bq1': '26', 'sq1': '6325'}
 quote event: 03-12-2021 11:54:45{'t': 'tf', 'e': 'NSE', 'tk': '11630', 'lp': '118.45', 'ap': '118.40', 'v': '166637', 'sp1': '118.55', 'bq1': '3135', 'sq1': '30'}
 quote event: 03-12-2021 11:54:46{'t': 'tf', 'e': 'NSE', 'tk': '11630', 'lp': '118.60'}
+```
 in the example above we see first message t='tk' with all the values, 2nd message has lasttradeprice avg price and few other fields with value changed.. note bp1 isnt sent as its still 118.45
 in the next tick ( 3rd message) only last price is changed to 118.6
 
@@ -657,9 +662,13 @@ The call can be made to get the exchange provided token for a scrip or alternate
 Trading Symbol:
 
 SymbolName + ExpDate + 'F' for all data having InstrumentName starting with FUT
+
 SymbolName + ExpDate + 'P' + StrikePrice for all data having InstrumentName starting with OPT and with OptionType PE
+
 SymbolName + ExpDate + 'C' + StrikePrice for all data having InstrumentName starting with OPT and with OptionType C
+
 For MCX, F to be ignored for FUT instruments
+
 ```
 api.searchscrip(exchange='NSE', searchtext='REL')
 ```
