@@ -622,6 +622,56 @@ in the next tick ( 3rd message) only last price is changed to 118.6
 | --- | --- | --- | -----|
 | instruments | ```list``` | False | list of instruments [NSE\|22,CDS\|1] |
 
+Subscription Acknowledgement:
+
+Number of Acknowledgements for a single subscription will be the same as the number of scrips mentioned in the key (k) field.
+
+| Json Fields | Possible value | Description|
+| t | tk |‘tk’ represents touchline acknowledgement |
+| e  |NSE, BSE, NFO ..|Exchange name | 
+| tk |22|Scrip Token |
+| pp |2 for NSE, BSE & 4 for CDS USDINR|Price precision  |
+| ts | | Trading Symbol |
+| ti | | Tick size |
+| ls | | Lot size |
+| lp | |LTP |
+| pc | |Percentage change |
+| v | | volume |
+| o | | Open price |
+| h | | High price |
+| l | | Low price |
+| c | | Close price |
+| ap | | Average trade price |
+| oi | | Open interest |
+| poi | | Previous day closing Open Interest |
+| toi | | Total open interest for underlying |
+| bq1  | | Best Buy Quantity 1 |
+| bp1  | | Best Buy Price 1 |
+| sq1  | | Best Sell Quantity 1 |
+| sp1  | | Best Sell Price 1|
+
+TouchLine subscription Updates :
+Accept for t, e, and tk other fields may / may not be present.
+
+| Json Fields | Possible value | Description|
+| t | tf |‘tf’ represents touchline acknowledgement |
+| e  |NSE, BSE, NFO ..|Exchange name | 
+| tk | 22 |Scrip Token |
+| lp | |LTP |
+| pc | |Percentage change |
+| v | | volume |
+| o | | Open price |
+| h | | High price |
+| l | | Low price |
+| c | | Close price |
+| ap | | Average trade price |
+| oi | | Open interest |
+| poi | | Previous day closing Open Interest |
+| toi | | Total open interest for underlying |
+| bq1  | | Best Buy Quantity 1 |
+| bp1  | | Best Buy Price 1 |
+| sq1  | | Best Sell Quantity 1 |
+| sp1  | | Best Sell Price 1|
 
 #### <a name="md-unsubscribe"></a> unsubscribe()
 send a list of instruments to stop watch
