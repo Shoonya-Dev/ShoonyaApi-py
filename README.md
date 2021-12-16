@@ -627,6 +627,7 @@ Subscription Acknowledgement:
 Number of Acknowledgements for a single subscription will be the same as the number of scrips mentioned in the key (k) field.
 
 | Json Fields | Possible value | Description|
+| --- | --- | --- | 
 | t | tk |‘tk’ represents touchline acknowledgement |
 | e  |NSE, BSE, NFO ..|Exchange name | 
 | tk |22|Scrip Token |
@@ -654,6 +655,7 @@ TouchLine subscription Updates :
 Accept for t, e, and tk other fields may / may not be present.
 
 | Json Fields | Possible value | Description|
+| --- | --- | --- | 
 | t | tf |‘tf’ represents touchline acknowledgement |
 | e  |NSE, BSE, NFO ..|Exchange name | 
 | tk | 22 |Scrip Token |
