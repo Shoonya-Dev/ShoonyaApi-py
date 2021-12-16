@@ -36,8 +36,8 @@ def open_callback():
     socket_opened = True
     print('app is connected')
     
-    api.subscribe('NSE|13')
-    api.subscribe(['NSE|22', 'BSE|522032'])
+    api.subscribe('NSE|11630')
+    #api.subscribe(['NSE|22', 'BSE|522032'])
 
 #end of callbacks
 
@@ -92,15 +92,14 @@ if ret != None:
             print(df)            
             
         elif prompt1 == 't':
-            ret = api.get_time_price_series(exchange='NSE', token='22')
+            ret = api.get_time_price_series(exchange='NFO', token='71321')
             
             df = pd.DataFrame.from_dict(ret)
-            print(df)            
-            
+            print(df)                        
 
         elif prompt1 == 'f':
             exch  = 'NFO'
-            query = 'COFORGE'
+            query = 'NIFTY30DEC21F'
             ret = api.searchscrip(exchange=exch, searchtext=query)
             print(ret)
 
@@ -126,15 +125,25 @@ if ret != None:
             token = '22'
             ret = api.get_quotes(exchange=exch, token=token)
             print(ret)
+
         elif prompt1 == 'o':
             exch  = 'NFO'
             tsym = 'COFORGE30DEC21F'
-            ret = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=3500, count=2)
-            print(ret)
+            chain = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=3500, count=2)
+
+            chainscrips = []
+            for scrip in chain['values']:
+                scripdata = api.get_quotes(exchange=scrip['exch'], token=scrip['token'])
+                chainscrips.append(scripdata)
+
+            print(chainscrips)
+
         elif prompt1 == 's':
+
             if socket_opened == True:
                 print('websocket already opened')
                 continue
+
             ret = api.start_websocket(order_update_callback=event_handler_order_update, subscribe_callback=event_handler_quote_update, socket_open_callback=open_callback)
             print(ret)
 
