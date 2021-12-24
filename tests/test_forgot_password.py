@@ -1,6 +1,6 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api_helper import ShoonyaApiPy, get_time
+from api_helper import ShoonyaApiPy
 import logging
 
 #supress debug messages for prod/tests

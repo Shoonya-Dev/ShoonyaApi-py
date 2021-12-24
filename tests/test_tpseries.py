@@ -1,6 +1,6 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api_helper import ShoonyaApiPy, get_time
+from api_helper import ShoonyaApiPy
 import logging
 import yaml
 import datetime
@@ -47,8 +47,11 @@ if ret != None:
     print("The start time is :",starttime)
     #get one day's data
 
-    ret = api.get_time_price_series(exchange='NSE', token='22', starttime=lastBusDay.timestamp())
+    #ret = api.get_time_price_series(exchange='NSE', token='22', starttime=lastBusDay.timestamp())
+    ret = api.get_time_price_series(exchange='NSE', token='2885' , interval=5)
     print("The time difference is :", timeit.default_timer() - starttime)
-    print(len(ret))
-    print(ret[0])
-    print(ret[-1])
+
+    if ret != None:
+        print(len(ret))
+        print(ret[0])
+        print(ret[-1])

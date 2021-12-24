@@ -99,7 +99,7 @@ if ret != None:
 
         elif prompt1 == 'f':
             exch  = 'NFO'
-            query = 'NIFTY30DEC21F'
+            query = 'BANKNIFTY 30DEC CE 34'
             ret = api.searchscrip(exchange=exch, searchtext=query)
             print(ret)
 

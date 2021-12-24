@@ -29,6 +29,7 @@ Orders and Trades
 - [modify_order](#md-modify_order)
 - [cancel_order](#md-cancel_order)
 - [exit_order](#md-exit_order)
+- [product_convertion](#md-prd_convert)
 - [get_orderbook](#md-get_orderbook)
 - [get_tradebook](#md-get_tradebook)
 - [get_singleorderhistory](#md-get_singleorderhistory)
@@ -113,12 +114,38 @@ exits a cover or bracket order
 | orderno | ```string``` | False | orderno with status open |
 | prd | ```string``` | False | Allowed for only H and B products (Cover order and bracket order)|
 
+#### <a name="md-prd_convert"></a> position_product_conversion(exchange, tradingsymbol, quantity, new_product_type, previous_product_type, buy_or_sell, day_or_cf)
+
+Convert a product of a position 
+
+| Param | Type | Optional |Description |
+| --- | --- | --- | ---|
+| exchange | ```string``` | False | Exchange |
+| tradingsymbol | ```string``` | False | Unique id of contract on which order was placed. Can’t be modified, must be the same as that of original order. (use url encoding to avoid special char error for symbols like M&M)|
+| quantity | ```integer``` | False | Quantity to be converted. |
+| exchange | ```string``` | False | Exchange |
+| exchange | ```string``` | False | Exchange |
+| exchange | ```string``` | False | Exchange |
+| exchange | ```string``` | False | Exchange |
+
+```
+ret = api.get_positions()
+#converts the first position from existing product to intraday
+p = ret[0]
+ret = api.position_product_conversion(p['exch'], p['tsym'], p['netqty'], 'I', p['prd'], 'B', 'DAY')
+```
+
 #### <a name="md-get_orderbook"></a>  Order Book
 List of Orders placed for the account
 
 | Param | Type | Optional |Description |
 | --- | --- | --- | ---|
 |  No Parameters  |
+
+```
+ret = api.get_order_book()
+print(ret)
+```
 
 #### <a name="md-get_tradebook"></a>  Trade Book 
 List of Trades of the account
@@ -127,6 +154,10 @@ List of Trades of the account
 | --- | --- | --- | ---|
 |  No Parameters  |
 
+```
+ret = api.get_trade_book()
+print(ret)
+```
 
 #### <a name="md-get_singleorderhistory"></a>  single order history(orderno)
 history an order
@@ -487,7 +518,7 @@ the response is as follows,
 | bo5| ```string``` | True |Best Buy Orders 5 |
 | so5| ```string``` | True |Best Sell Orders 5|
 
-#### <a name="md-get_time_price_series"></a> get_time_price_series(exchange, token, starttime, endtime):
+#### <a name="md-get_time_price_series"></a> get_time_price_series(exchange, token, starttime, endtime, interval):
 gets the chart date for the symbol
 
 | Param | Type | Optional |Description |
@@ -496,6 +527,7 @@ gets the chart date for the symbol
 | token | ```string``` | True | token number of the contract|
 | starttime | ```string``` | True | Start time (seconds since 1 jan 1970) |
 | endtime | ```string``` | True | End Time (seconds since 1 jan 1970)|
+| interval | ```integer``` | True | Candle size in minutes (1,3,5,10,15,30,60,120,240)|
 
 the response is as follows,
 
@@ -517,6 +549,12 @@ the response is as follows,
 | v | ```string``` | True | volume  |
 | inoi | ```string``` | True | Interval oi change  |
 | oi | ```string``` | True | oi  |
+
+```
+lastBusDay = datetime.datetime.today()
+lastBusDay = lastBusDay.replace(hour=0, minute=0, second=0, microsecond=0)
+ret = api.get_time_price_series(exchange='NSE', token='22', starttime=lastBusDay.timestamp())
+```
 
 #### <a name="md-get_optionchain"></a> get_option_chain(exchange, tradingsymbol, strikeprice, count):
 gets the chart date for the symbol
