@@ -880,7 +880,8 @@ Sample Failure Response :
 }
 
 #### <a name="md-get_positions"></a> get_positions()
-retrieves the positions cf and day as a list
+
+retrieves the overnight and day positions as a list
 
 Example: 
 ```
@@ -1726,7 +1727,8 @@ Sample Failure Response :
 
 
 #### <a name="md-get_optionchain"></a> get_option_chain(exchange, tradingsymbol, strikeprice, count):
-gets the chart date for the symbol
+
+gets the contracts of related strikes
 
 | Param | Type | Optional |Description |
 | --- | --- | --- | ---|
@@ -1824,6 +1826,8 @@ quote event: 03-12-2021 11:54:46{'t': 'tf', 'e': 'NSE', 'tk': '11630', 'lp': '11
 ```
 in the example above we see first message t='tk' with all the values, 2nd message has lasttradeprice avg price and few other fields with value changed.. note bp1 isnt sent as its still 118.45
 in the next tick ( 3rd message) only last price is changed to 118.6
+
+This method can be used to subscribe indices as well such as Nifty-50 [NSE|26000], BankNifty[NSE|26009]
 
 | Param | Type | Optional |Description |
 | --- | --- | --- | -----|
