@@ -7,8 +7,8 @@ import datetime
 import timeit
 
 #supress debug messages for prod/tests
-#logging.basicConfig(level=logging.DEBUG)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.INFO)
 
 
 #start of our program
@@ -40,18 +40,27 @@ if ret != None:
     elif datetime.date.weekday(lastBusDay) == 6:      #if it's Sunday
      lastBusDay = lastBusDay - datetime.timedelta(days = 2); #then make it Friday
 
+    lastBusDay = datetime.datetime.today()
+    lastBusDay = lastBusDay.replace(hour=0, minute=0, second=0, microsecond=0)
     print(lastBusDay.timestamp())
     #lastBusDay = 1639098000
 
     starttime = timeit.default_timer()
     print("The start time is :",starttime)
     #get one day's data
+    starttime=1642265814
+    endtime=1642438794
+    
+    ret = api.get_time_price_series(exchange='NSE', token='26009', starttime=1642265814, endtime=1642438794, interval=240)
 
-    #ret = api.get_time_price_series(exchange='NSE', token='22', starttime=lastBusDay.timestamp())
-    ret = api.get_time_price_series(exchange='NSE', token='2885' , interval=5)
-    print("The time difference is :", timeit.default_timer() - starttime)
+    #ret = api.get_time_price_series(exchange='NSE', token='2885', starttime=lastBusDay.timestamp())
+    #ret = api.get_time_price_series(exchange='NSE', token='2885' , interval=5)
+
+    
 
     if ret != None:
-        print(len(ret))
-        print(ret[0])
-        print(ret[-1])
+        print(ret)
+        #for val in ret:
+        #    print(val)
+
+    print("The time difference is :", timeit.default_timer() - starttime)

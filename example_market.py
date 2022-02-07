@@ -81,12 +81,12 @@ if ret != None:
         prompt1=input('what shall we do? ').lower()                    
         
         if prompt1 == 'v':
-            start_time = "09-07-2021 00:00:00"
+            start_time = "17-01-2022 00:00:00"
             end_time = time.time()
             
             start_secs = get_time(start_time)
 
-            ret = api.get_time_price_series(exchange='NSE', token='22', starttime=start_secs, endtime=end_time)
+            ret = api.get_time_price_series(exchange='NSE', token='22', starttime=1642265814, endtime=1642438794, interval=240)
             
             df = pd.DataFrame.from_dict(ret)
             print(df)            
@@ -98,8 +98,8 @@ if ret != None:
             print(df)                        
 
         elif prompt1 == 'f':
-            exch  = 'NFO'
-            query = 'BANKNIFTY 30DEC CE 34'
+            exch  = 'MCX'
+            query = 'CRUDEOIL FEB'
             ret = api.searchscrip(exchange=exch, searchtext=query)
             print(ret)
 
@@ -127,9 +127,9 @@ if ret != None:
             print(ret)
 
         elif prompt1 == 'o':
-            exch  = 'NFO'
-            tsym = 'COFORGE30DEC21F'
-            chain = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=3500, count=2)
+            exch  = 'MCX'
+            tsym = 'CRUDEOIL18FEB22'
+            chain = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=4150, count=2)
 
             chainscrips = []
             for scrip in chain['values']:
