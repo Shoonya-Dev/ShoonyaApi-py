@@ -1,6 +1,6 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api_helper import NorenApiPy, Order
+from api_helper import ShoonyaApiPy, Order
 import logging
 import yaml
 import timeit
@@ -9,7 +9,7 @@ import timeit
 logging.basicConfig(level=logging.DEBUG)
 
 #start of our program
-api = NorenApiPy()
+api = ShoonyaApiPy()
 
 #credentials
 with open('..\\cred.yml') as f:
