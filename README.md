@@ -1605,7 +1605,7 @@ Sample Failure Response :
 }
 
 #### <a name="md-get_time_price_series"></a> get_time_price_series(exchange, token, starttime, endtime, interval):
-gets the chart date for the symbol
+gets the chart data for the symbol
 
 Example:
 ```
