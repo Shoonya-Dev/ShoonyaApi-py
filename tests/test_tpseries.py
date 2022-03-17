@@ -14,6 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 #start of our program
 api = ShoonyaApiPy()
 
+
 #use following if yaml isnt used
 #user    = <uid>
 #pwd     = <password>
@@ -48,10 +49,12 @@ if ret != None:
     starttime = timeit.default_timer()
     print("The start time is :",starttime)
     #get one day's data
-    starttime=1642265814
-    endtime=1642438794
+    starttime =  lastBusDay
+    endtime   =  datetime.datetime.today()
+    endtime   =  endtime.replace(hour=0, minute=0, second=0, microsecond=0)  + datetime.timedelta(days = 1)
     
-    ret = api.get_time_price_series(exchange='NSE', token='26009', starttime=1642265814, endtime=1642438794, interval=240)
+    ret = api.get_time_price_series(exchange='NSE', token='26009', starttime=lastBusDay.timestamp(), endtime=endtime.timestamp(), interval=240)
+
 
     #ret = api.get_time_price_series(exchange='NSE', token='2885', starttime=lastBusDay.timestamp())
     #ret = api.get_time_price_series(exchange='NSE', token='2885' , interval=5)
