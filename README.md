@@ -1,6 +1,12 @@
 # ShoonyaApi 
 
-Api used to connect to Shoonya OMS
+Api used to connect to Shoonya OMS.
+
+This is a python wrapper or connector to the RestAPI and websocket of Shoonya. 
+
+More details are found here
+https://www.finvasia.com/api-documentation
+
 ****
 
 ## Build
@@ -18,6 +24,7 @@ to build this package and install it on your server please use
 - [logout](#md-logout)
 
 Symbols
+- [scripmasters](#md-scripmasters)
 - [searchscrip](#md-searchscrip)
 - [get_security_info](#md-get_security_info)
 - [get_quotes](#md-get_quotes)
@@ -1166,6 +1173,20 @@ Sample Failure Response :
    "emsg":"Server Timeout :  "
 }
 Market Info
+
+#### <a name="md-scripmasters"></a> scripmasters:
+
+The scrip masters can be downloaded from the following links
+
+https://shoonya.finvasia.com/NSE_symbols.txt.zip
+https://shoonya.finvasia.com/NFO_symbols.txt.zip
+https://shoonya.finvasia.com/CDS_symbols.txt.zip
+https://shoonya.finvasia.com/MCX_symbols.txt.zip
+https://shoonya.finvasia.com/BSE_symbols.txt.zip
+
+example is provided in test/test_download_masters.py 
+
+##Since this is a huge file, users are recommended to download once a day and store it locally.
 
 
 #### <a name="md-searchscrip"></a> searchscrip(exchange, searchtext):
