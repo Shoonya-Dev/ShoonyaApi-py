@@ -6,7 +6,7 @@ import logging
 import time
 import yaml
 import pandas as pd
-
+from time import sleep
 #sample
 logging.basicConfig(level=logging.DEBUG)
 
@@ -76,10 +76,22 @@ if ret != None:
     while True:
         if socket_opened == True:
             print('q => quit')
+            
+            print('r => ')
             prompt1=input('what shall we do? ').lower()    
-
-            print('Fin') #an answer that wouldn't be yes or no
-            break   
+            if prompt1 == 's':
+                print('closing websocket')
+                api.close_websocket()
+                continue
+            if prompt1 == 'r':
+                print('closing websocket')
+                api.close_websocket()
+                sleep(1)
+                api.start_websocket(order_update_callback=event_handler_order_update, subscribe_callback=event_handler_quote_update, socket_open_callback=open_callback)            
+                continue
+            else:
+                print('Fin') #an answer that wouldn't be yes or no
+                break   
 
         else:
             continue
