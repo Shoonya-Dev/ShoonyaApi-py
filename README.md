@@ -53,6 +53,7 @@ Websocket API
 - [unsubscribe](#md-unsubscribe)
 
 Example
+- [order states](#md-order-states)
 - [getting started](#md-example-basic)
 - [Market Functions](#md-example-market)
 - [Orders and Trade](#md-example-orders)
@@ -1911,6 +1912,36 @@ Accept for t, e, and tk other fields may / may not be present.
 send a list of instruments to stop watch
 
 ****
+## <a name="md-example-basic"></a> Order States and Report Types
+
+Possible Values for Order States are as follows
+
+PENDING
+CANCELED
+OPEN
+REJECTED
+COMPLETE
+TRIGGER_PENDING
+INVALID_STATUS_TYPE
+
+The Orders will have a request status or report type for modify/cancel the possible values are as follows
+
+NewAck
+ModAck
+CanAck
+PendingNew
+PendingReplace
+PendingCancel
+New
+Replaced
+Canceled
+Fill
+Rejected
+ReplaceRejected
+CancelRejected
+INVALID_REPORT_TYPE
+
+
 ## <a name="md-example-basic"></a> Example - Getting Started
 First configure the endpoints in the api_helper constructor. 
 Thereon provide your credentials and login as follows.
