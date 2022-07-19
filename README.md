@@ -1917,28 +1917,47 @@ send a list of instruments to stop watch
 Possible Values for Order States are as follows
 
 PENDING
+
 CANCELED
+
 OPEN
+
 REJECTED
+
 COMPLETE
+
 TRIGGER_PENDING
+
 INVALID_STATUS_TYPE
 
-The Orders will have a request status or report type for modify/cancel the possible values are as follows
+### The Orders will have a request status or report type for modify/cancel the possible values are as follows
 
 NewAck
+
 ModAck
+
 CanAck
+
 PendingNew
+
 PendingReplace
+
 PendingCancel
+
 New
+
 Replaced
+
 Canceled
+
 Fill
+
 Rejected
+
 ReplaceRejected
+
 CancelRejected
+
 INVALID_REPORT_TYPE
 
 
