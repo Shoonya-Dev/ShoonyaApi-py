@@ -2,7 +2,7 @@ import requests
 import zipfile
 import os
 root = 'https://shoonya.finvasia.com/'
-masters = ['NSE_symbols.txt.zip', 'NFO_symbols.txt.zip', 'CDS_symbols.txt.zip', 'MCX_symbols.txt.zip','BSE_symbols.txt.zip,] 
+masters = ['NSE_symbols.txt.zip', 'NFO_symbols.txt.zip', 'CDS_symbols.txt.zip', 'MCX_symbols.txt.zip', 'BSE_symbols.txt.zip,] 
 
 
 for zip_file in masters:    
