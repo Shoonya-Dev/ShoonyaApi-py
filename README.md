@@ -81,7 +81,7 @@ Request Details :
 |pwd*||Sha256 of the user entered password.|
 |factor2*||DOB or PAN as entered by the user. (DOB should be in DD-MM-YYYY)|
 |vc*||Vendor code provided by noren team, along with connection URLs|
-|appkey*||Sha256 of uid|API_key|
+|appkey*||Sha256 Encryption with the format For Example (uid Single Pipeline API key) All Should be in With out Any Space|
 |imei*||Send mac if users logs in for desktop, imei is from mobile|
 |addldivinf||Optional field, Value must be in below format:|iOS - iosInfo.utsname.machine - iosInfo.systemVersion|Android - androidInfo.model - androidInfo.version|examples:|iOS - iPhone 8.0 - 9.0|Android - Moto G - 9 PKQ1.181203.01|
 |ipaddr||Optional field|
@@ -2216,6 +2216,12 @@ while(feed_opened==False):
 
 ****
 
+## Contact Us
+
+For any queries, feel free to reach us , email at apisupport@finvasia.in or call at 0172-4740000
+& also Just visit our website there is a Livechat option.
+
+****
 ## Author
 
 Kumar Anand
