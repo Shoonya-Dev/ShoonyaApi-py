@@ -179,7 +179,7 @@ Request Details :
 |prc*||Order Price|
 |trgprc||Only to be sent in case of SL / SL-M order.|
 |dscqty||Disclosed quantity (Max 10% for NSE, and 50% for MCX)|
-|prd*|C / M / I / B / H|Product name (Select from ‘prarr’ Array provided in User Details response, and if same is allowed for selected, exchange. Show product display name, for user to select, and send corresponding prd in API call) "C" For CNC, "M" FOR NRML, "I" FOR MIS, "B" FOR BRACKET ORDER, "H" FOR COVER ORDER|
+|prd*|C / M / I / B / H|Product name (Select from ‘prarr’ Array provided in User Details response, and if same is allowed for selected, exchange. Show product display name, for user to select, and send corresponding prd in API call)                  "C" For CNC, "M" FOR NRML, "I" FOR MIS, "B" FOR BRACKET ORDER, "H" FOR COVER ORDER|
 |trantype*|B / S|B -> BUY, S -> SELL|
 |prctyp*|LMT / MKT  / SL-LMT / SL-MKT / DS / 2L / 3L||||
 |ret*|DAY / EOS / IOC |Retention type (Show options as per allowed exchanges) |
@@ -1180,9 +1180,13 @@ Market Info
 The scrip masters can be downloaded from the following links
 
 https://shoonya.finvasia.com/NSE_symbols.txt.zip
+
 https://shoonya.finvasia.com/NFO_symbols.txt.zip
+
 https://shoonya.finvasia.com/CDS_symbols.txt.zip
+
 https://shoonya.finvasia.com/MCX_symbols.txt.zip
+
 https://shoonya.finvasia.com/BSE_symbols.txt.zip
 
 example is provided in test/test_download_masters.py 
@@ -1980,7 +1984,7 @@ user        = '< user id>'
 u_pwd       = '< password >'
 factor2     = 'second factor'
 vc          = 'vendor code'
-app_key     = 'secret key'
+app_key     = 'API key'
 imei        = 'uniq identifier'
 
 
