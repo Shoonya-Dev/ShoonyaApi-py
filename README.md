@@ -81,7 +81,7 @@ Request Details :
 |pwd*||Sha256 of the user entered password.|
 |factor2*||DOB or PAN as entered by the user. (DOB should be in DD-MM-YYYY)|
 |vc*||Vendor code provided by noren team, along with connection URLs|
-|appkey*||Sha256 of  uid|vendor_key|
+|appkey*||Sha256 of  uid|API_key|
 |imei*||Send mac if users logs in for desktop, imei is from mobile|
 |addldivinf||Optional field, Value must be in below format:|iOS - iosInfo.utsname.machine - iosInfo.systemVersion|Android - androidInfo.model - androidInfo.version|examples:|iOS - iPhone 8.0 - 9.0|Android - Moto G - 9 PKQ1.181203.01|
 |ipaddr||Optional field|
@@ -103,7 +103,7 @@ Response Details :
 |actid||Account id|
 |email||Email Id|
 |brkname||Broker id|
-|emsg||This will be present only if Login fails.|(Redirect to force change password if message is “Invalid Input : Password Expired” or “Invalid Input : Change Password”)|
+|emsg||This will be present only if Login fails.|(Redirect to force change password if message is â€œInvalid Input : Password Expiredâ€ or â€œInvalid Input : Change Passwordâ€)|
 
 
 Sample Success Response :
@@ -173,13 +173,13 @@ Request Details :
 | --- | --- | ---|
 |uid*||Logged in User Id|
 |actid*||Login users account ID|
-|exch*|NSE  / NFO / BSE / MCX|Exchange (Select from ‘exarr’ Array provided in User Details response)|
+|exch*|NSE  / NFO / BSE / MCX|Exchange (Select from â€˜exarrâ€™ Array provided in User Details response)|
 |tsym*||Unique id of contract on which order to be placed. (use url encoding to avoid special char error for symbols like M&M)|
 |qty*||Order Quantity |
 |prc*||Order Price|
 |trgprc||Only to be sent in case of SL / SL-M order.|
 |dscqty||Disclosed quantity (Max 10% for NSE, and 50% for MCX)|
-|prd*|C / M / H|Product name (Select from ‘prarr’ Array provided in User Details response, and if same is allowed for selected, exchange. Show product display name, for user to select, and send corresponding prd in API call)|
+|prd*|C / M / I / B / H|Product name (Select from â€˜prarrâ€™ Array provided in User Details response, and if same is allowed for selected, exchange. Show product display name, for user to select, and send corresponding prd in API call) "C" For CNC, "M" FOR NRML, "I" FOR MIS, "B" FOR BRACKET ORDER, "H" FOR COVER ORDER|
 |trantype*|B / S|B -> BUY, S -> SELL|
 |prctyp*|LMT / MKT  / SL-LMT / SL-MKT / DS / 2L / 3L||||
 |ret*|DAY / EOS / IOC |Retention type (Show options as per allowed exchanges) |
@@ -188,7 +188,7 @@ Request Details :
 |bpprc||Book Profit Price applicable only if product is selected as B (Bracket order ) |
 |blprc||Book loss Price applicable only if product is selected as H and B (High Leverage and Bracket order ) |
 |trailprc||Trailing Price applicable only if product is selected as H and B (High Leverage and Bracket order ) |
-|amo||Yes , If not sent, of Not “Yes”, will be treated as Regular order. |
+|amo||Yes , If not sent, of Not â€œYesâ€, will be treated as Regular order. |
 |tsym2||Trading symbol of second leg, mandatory for price type 2L and 3L (use url encoding to avoid special char error for symbols like M&M)|
 |trantype2||Transaction type of second leg, mandatory for price type 2L and 3L|
 |qty2||Quantity for second leg, mandatory for price type 2L and 3L|
@@ -247,7 +247,7 @@ Request Details :
 |prctyp|LMT / MKT / SL-MKT / SL-LMT|This can be modified.|
 |prc||Modified / New price|
 |qty||Modified / New Quantity||Quantity to Fill / Order Qty - This is the total qty to be filled for the order. Its Open Qty/Pending Qty plus Filled Shares (cumulative for the order) for the order.|* Please do not send only the pending qty in this field|
-|tsym*||Unque id of contract on which order was placed. Can’t be modified, must be the same as that of original order. (use url encoding to avoid special char error for symbols like M&M)|
+|tsym*||Unque id of contract on which order was placed. Canâ€™t be modified, must be the same as that of original order. (use url encoding to avoid special char error for symbols like M&M)|
 |ret|DAY / IOC / EOS|New Retention type of the order |
 ||||
 |trgprc||New trigger price in case of SL-MKT or SL-LMT|
@@ -365,7 +365,7 @@ Request Details :
 |Json Fields|Possible value|Description|
 | --- | --- | ---|
 |exch*||Exchange|
-|tsym*||Unique id of contract on which order was placed. Can’t be modified, must be the same as that of original order. (use url encoding to avoid special char error for symbols like M&M)|
+|tsym*||Unique id of contract on which order was placed. Canâ€™t be modified, must be the same as that of original order. (use url encoding to avoid special char error for symbols like M&M)|
 |qty*||Quantity to be converted.|
 |uid*||User id of the logged in user.|
 |actid*||Account id|
@@ -464,42 +464,42 @@ Sample Success Output :
 Success response :
 [
       {
-“stat” : “Ok”,
-“exch” : “NSE” ,
-“tsym” : “ACC-EQ” ,
-“norenordno” : “20062500000001223”,
-               “prc” : “127230”,
-               “qty” : “100”,
-               “prd” : “C”,
-“status”: “Open”,
-               “trantype” : “B”,
- “prctyp” : ”LMT”,
-               “fillshares” : “0”,
-               “avgprc” : “0”,
-“exchordid” : “250620000000343421”,
- “uid” : “VIDYA”, 
- “actid” : “CLIENT1”,
- “ret” : “DAY”,
- “amo” : “Yes”
+â€œstatâ€ : â€œOkâ€,
+â€œexchâ€ : â€œNSEâ€ ,
+â€œtsymâ€ : â€œACC-EQâ€ ,
+â€œnorenordnoâ€ : â€œ20062500000001223â€,
+               â€œprcâ€ : â€œ127230â€,
+               â€œqtyâ€ : â€œ100â€,
+               â€œprdâ€ : â€œCâ€,
+â€œstatusâ€: â€œOpenâ€,
+               â€œtrantypeâ€ : â€œBâ€,
+ â€œprctypâ€ : â€LMTâ€,
+               â€œfillsharesâ€ : â€œ0â€,
+               â€œavgprcâ€ : â€œ0â€,
+â€œexchordidâ€ : â€œ250620000000343421â€,
+ â€œuidâ€ : â€œVIDYAâ€, 
+ â€œactidâ€ : â€œCLIENT1â€,
+ â€œretâ€ : â€œDAYâ€,
+ â€œamoâ€ : â€œYesâ€
      },
     {
-“stat” : “Ok”,
-“exch” : “NSE” ,
-“tsym” : “ABB-EQ” ,
-“norenordno” : “20062500000002543”,
-               “prc” : “127830”,
-            “qty” : “50”,
-               “prd” : “C”,
-“status”: “REJECT”,
-              “trantype” : “B”,
-“prctyp” : ”LMT”,
-             “fillshares” : “0”,
-             “avgprc” : “0”,
-              “rejreason” : “Insufficient funds”
-“uid” : “VIDYA”, 
-“actid” : “CLIENT1”,
-“ret” : “DAY”,
-“amo” : “No”
+â€œstatâ€ : â€œOkâ€,
+â€œexchâ€ : â€œNSEâ€ ,
+â€œtsymâ€ : â€œABB-EQâ€ ,
+â€œnorenordnoâ€ : â€œ20062500000002543â€,
+               â€œprcâ€ : â€œ127830â€,
+            â€œqtyâ€ : â€œ50â€,
+               â€œprdâ€ : â€œCâ€,
+â€œstatusâ€: â€œREJECTâ€,
+              â€œtrantypeâ€ : â€œBâ€,
+â€œprctypâ€ : â€LMTâ€,
+             â€œfillsharesâ€ : â€œ0â€,
+             â€œavgprcâ€ : â€œ0â€,
+              â€œrejreasonâ€ : â€œInsufficient fundsâ€
+â€œuidâ€ : â€œVIDYAâ€, 
+â€œactidâ€ : â€œCLIENT1â€,
+â€œretâ€ : â€œDAYâ€,
+â€œamoâ€ : â€œNoâ€
     }
 ]
 
@@ -571,8 +571,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065715",
-       "uid": "GURURAJ",
-       "actid": "GURURAJ",
+       "uid": "FA12345",
+       "actid": "FA12345",
        "exch": "NSE",
        "prctyp": "LMT",
        "ret": "DAY",
@@ -598,8 +598,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "GURURAJ",
-       "actid": "GURURAJ",
+       "uid": "FA12345",
+       "actid": "FA12345",
        "exch": "NSE",
        "prctyp": "LMT",
        "ret": "DAY",
@@ -693,8 +693,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "DEMO1",
-       "actid": "DEMO1",
+       "uid": "DEMO01",
+       "actid": "DEMO01",
        "exch": "NSE",
        "tsym": "ACCELYA-EQ",
        "qty": "180",
@@ -720,8 +720,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "DEMO1",
-       "actid": "DEMO1",
+       "uid": "DEMO01",
+       "actid": "DEMO01",
        "exch": "NSE",
        "tsym": "ACCELYA-EQ",
        "qty": "180",
@@ -1293,7 +1293,7 @@ Request Details :
 | --- | --- | ---|
 |uid*||Logged in User Id|
 |stext*||Search Text|
-|exch||Exchange (Select from ‘exarr’ Array provided in User Details response)|
+|exch||Exchange (Select from â€˜exarrâ€™ Array provided in User Details response)|
 
 Response Details :
 
@@ -1644,7 +1644,7 @@ Request Details :
 |token*|||
 |st||Start time (seconds since 1 jan 1970)|
 |et||End Time (seconds since 1 jan 1970)|
-|intrv|“1”, ”3”, “5”, “10”, “15”, “30”, “60”, “120”, “240”|Candle size in minutes (optional field, if not given assume to be “1”)|
+|intrv|â€œ1â€, â€3â€, â€œ5â€, â€œ10â€, â€œ15â€, â€œ30â€, â€œ60â€, â€œ120â€, â€œ240â€|Candle size in minutes (optional field, if not given assume to be â€œ1â€)|
 
 Response Details :
 
@@ -1795,13 +1795,13 @@ Subscription Acknowledgement:
 
 | Json Fields| Possible value| Description| 
 | --- | --- | --- |
-| t  |  ok |  ‘ok’ represents order update subscription acknowledgement | 
+| t  |  ok |  â€˜okâ€™ represents order update subscription acknowledgement | 
 
 Order Update subscription Updates :
 
  | Json Fields | Possible value |  Description | 
  | --- | --- | --- |
- | t | om | ‘om’ represents touchline feed | 
+ | t | om | â€˜omâ€™ represents touchline feed | 
  | norenordno |   | Noren Order Number | 
  | uid |   | User Id | 
  | actid |   | Account ID | 
@@ -1861,7 +1861,7 @@ Number of Acknowledgements for a single subscription will be the same as the num
 
 | Json Fields | Possible value | Description|
 | --- | --- | --- | 
-| t | tk |‘tk’ represents touchline acknowledgement |
+| t | tk |â€˜tkâ€™ represents touchline acknowledgement |
 | e  |NSE, BSE, NFO ..|Exchange name | 
 | tk |22|Scrip Token |
 | pp |2 for NSE, BSE & 4 for CDS USDINR|Price precision  |
@@ -1889,7 +1889,7 @@ Accept for t, e, and tk other fields may / may not be present.
 
 | Json Fields | Possible value | Description|
 | --- | --- | --- | 
-| t | tf |‘tf’ represents touchline acknowledgement |
+| t | tf |â€˜tfâ€™ represents touchline acknowledgement |
 | e  |NSE, BSE, NFO ..|Exchange name | 
 | tk | 22 |Scrip Token |
 | lp | |LTP |
@@ -2224,7 +2224,7 @@ Kumar Anand
 
 ## License
 
-Copyright (C) 2021 Kambala Solutions Pvt Ltd- All Rights Reserved
+Copyright (C) 2021 Finvasia Securities Pvt. Ltd. - All Rights Reserved
 Copying of this file, via any medium is strictly prohibited.
 Proprietary and confidential.
 All file transfers are logged.
