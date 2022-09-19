@@ -1,4 +1,4 @@
-# ShoonyaApi 
+# Shoonya API 
 
 Api used to connect to Shoonya OMS.
 
@@ -76,12 +76,12 @@ Request Details :
 
 |Json Fields|Possible value|Description|
 | --- | --- | ---|
-|apkversion*||Application version.|
+|apkversion*||Application version.For Ex. 1.0.0|
 |uid*||User Id of the login user|
 |pwd*||Sha256 of the user entered password.|
 |factor2*||DOB or PAN as entered by the user. (DOB should be in DD-MM-YYYY)|
 |vc*||Vendor code provided by noren team, along with connection URLs|
-|appkey*||Sha256 Encryption with the format For Example (uid Single Pipeline API key) All Should be in With out Any Space|
+|appkey*||Sha256 Encryption with the format of Example (uid Single Pipeline API key) When you have created the encryption key all must be without spaces.|
 |imei*||Send mac if users logs in for desktop, imei is from mobile|
 |addldivinf||Optional field, Value must be in below format:|iOS - iosInfo.utsname.machine - iosInfo.systemVersion|Android - androidInfo.model - androidInfo.version|examples:|iOS - iPhone 8.0 - 9.0|Android - Moto G - 9 PKQ1.181203.01|
 |ipaddr||Optional field|
