@@ -67,7 +67,7 @@ user    = <uid>
 pwd     = <password>
 factor2 = <2nd factor>
 vc      = <vendor code>
-app_key = <secret key>
+app_key = <API key>
 imei    = <imei>
 
 ret = api.login(userid=uid, password=pwd, twoFA=factor2, vendor_code=vc, api_secret=app_key, imei=imei)
@@ -79,7 +79,7 @@ Request Details :
 |apkversion*||Application version.For Ex. 1.0.0|
 |uid*||User Id of the login user|
 |pwd*||Sha256 of the user entered password.|
-|factor2*||DOB or PAN as entered by the user. (DOB should be in DD-MM-YYYY)|
+|factor2*||OTP or TOTP as entered by the user. (User Needs to be generated from the Shoonya app)|
 |vc*||Vendor code provided by noren team, along with connection URLs|
 |appkey*||Sha256 Encryption with the format of Example (uid Single Pipeline API key) When you have created the encryption key all must be without spaces.|
 |imei*||Send mac if users logs in for desktop, imei is from mobile|
@@ -173,9 +173,9 @@ Request Details :
 | --- | --- | ---|
 |uid*||Logged in User Id|
 |actid*||Login users account ID|
-|exch*|NSE  / NFO / BSE / MCX|Exchange (Select from ‘exarr’ Array provided in User Details response)|
-|tsym*||Unique id of contract on which order to be placed. (use url encoding to avoid special char error for symbols like M&M)|
-|qty*||Order Quantity |
+|exch*|NSE  / NFO / CDS / MCX / BSE|Exchange (Select from ‘exarr’ Array provided in User Details response)|
+|tsym*|RELIANCE-EQ / L&TFH29SEP22P97 / USDINR25NOV22C76 / CRUDEOIL16NOV22P5400 / WHIRLPOOL |Unique id of contract on which order to be placed. (Use the Results from Search Script to get the trading symbol & use url encoding to avoid special char error for symbols like M&M)|
+|qty*|RELIANCE-EQ:-1 / NIFTY:-50 / BANKNIFTY:-25 |Order Quantity |
 |prc*||Order Price|
 |trgprc||Only to be sent in case of SL / SL-M order.|
 |dscqty||Disclosed quantity (Max 10% for NSE, and 50% for MCX)|
