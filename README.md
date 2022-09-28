@@ -2222,8 +2222,8 @@ while(feed_opened==False):
 
 ## Contact Us
 
-For any queries, feel free to reach us , email at apisupport@finvasia.in or call at 0172-4740000
-& also Just visit our website there is a Livechat option.
+For any queries, feel free to reach us, email at apisupport@finvasia.in or call at 0172-4740000
+& also Just visit our website there is a Live chat option.
 
 ****
 ## Author
@@ -2234,10 +2234,7 @@ Kumar Anand
 
 ## License
 
-Copyright (C) 2021 Finvasia Securities Pvt. Ltd. - All Rights Reserved
-Copying of this file, via any medium is strictly prohibited.
-Proprietary and confidential.
-All file transfers are logged.
+Copyright (C) 2021 Kambala Solutions Pvt Ltd- All Rights Reserved Copying of this file, via any medium is strictly prohibited. Proprietary and confidential. All file transfers are logged.
 
 ****
 
