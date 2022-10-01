@@ -79,7 +79,7 @@ Request Details :
 |apkversion*||Application version.|
 |uid*||User Id of the login user|
 |pwd*||Sha256 of the user entered password.|
-|factor2*||DOB or PAN as entered by the user. (DOB should be in DD-MM-YYYY)|
+|factor2*||OTP or TOTP |
 |vc*||Vendor code provided by noren team, along with connection URLs|
 |appkey*||Sha256 of  uid|vendor_key|
 |imei*||Send mac if users logs in for desktop, imei is from mobile|
@@ -1836,7 +1836,7 @@ Order Update subscription Updates :
 
 
 #### <a name="md-subscribe"></a> subscribe([instruments])
-send a list of instruments to watch
+send a list of instruments to watch, feed_type specifies the type of data requested ( t=touchline d=depth)
 
 t='tk' is sent once on subscription for each instrument. this will have all the fields with the most recent value
 thereon t='tf' is sent for fields that have changed.
@@ -1907,6 +1907,64 @@ Accept for t, e, and tk other fields may / may not be present.
 | bp1  | | Best Buy Price 1 |
 | sq1  | | Best Sell Quantity 1 |
 | sp1  | | Best Sell Price 1|
+
+Depth Messages will be as below 
+
+|Json Fields|Possible value|Description|
+| --- | --- | --- | 
+|t|dk|‘dk’ represents depth acknowledgement|
+|e|NSE, BSE, NFO ..|Exchange name|
+|tk|22|Scrip Token|
+|lp||LTP|
+|pc||Percentage change|
+|v||volume|
+|o||Open price|
+|h||High price|
+|l||Low price|
+|c||Close price|
+|ap||Average trade price|
+|ltt||Last trade time|
+|ltq||Last trade quantity|
+|tbq||Total Buy Quantity|
+|tsq||Total Sell Quantity|
+|bq1 ||Best Buy Quantity 1|
+|bq2||Best Buy Quantity 2|
+|bq3 ||Best Buy Quantity 3|
+|bq4 ||Best Buy Quantity 4|
+|bq5 ||Best Buy Quantity 5|
+|bp1 ||Best Buy Price 1|
+|bp2||Best Buy Price 2|
+|bp3 ||Best Buy Price 3|
+|bp4 ||Best Buy Price 4|
+|bp5 ||Best Buy Price 5|
+|bo1 ||Best Buy Orders 1|
+|bo2||Best Buy Orders 2|
+|bo3 ||Best Buy Orders 3|
+|bo4 ||Best Buy Orders 4|
+|bo5 ||Best Buy Orders 5|
+|sq1 ||Best Sell Quantity 1|
+|sq2||Best Sell Quantity 2|
+|sq3 ||Best Sell Quantity 3|
+|sq4 ||Best Sell Quantity 4|
+|sq5 ||Best Sell Quantity 5|
+|sp1 ||Best Sell Price 1|
+|sp2||Best Sell Price 2|
+|sp3 ||Best Sell Price 3|
+|sp4 ||Best Sell Price 4|
+|sp5 ||Best Sell Price 5|
+|so1 ||Best Sell Orders 1|
+|so2||Best Sell Orders 2|
+|so3 ||Best Sell Orders 3|
+|so4 ||Best Sell Orders 4|
+|so5 ||Best Sell Orders 5|
+|lc||Lower Circuit Limit|
+|uc||Upper Circuit Limit|
+|52h||52 week high low in other exchanges, Life time high low in mcx|
+|52l||52 week high low in other exchanges, Life time high low in mcx|
+|oi||Open interest|
+|poi||Previous day closing Open Interest|
+|toi||Total open interest for underlying|
+|ft ||Feed time||
 
 #### <a name="md-unsubscribe"></a> unsubscribe()
 send a list of instruments to stop watch
