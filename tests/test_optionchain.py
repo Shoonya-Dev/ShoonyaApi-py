@@ -21,8 +21,8 @@ def getLastQuote(scrip):
 
     return scripdata
 
-def getLastQuoteOptionChain(exchange, tradingsymbol, strikeprice, count = 2):
-    chain = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=strikeprice)
+def getLastQuoteOptionChain(exchange, tradingsymbol, strikeprice, count = 10):
+    chain = api.get_option_chain(exchange=exch, tradingsymbol=tsym, strikeprice=strikeprice, count=count)
 
     print(chain)
     
