@@ -11,12 +11,16 @@ api = ShoonyaApiPy()
 #create .env file to securely access user credentials in program
 load_dotenv('/home/akash/Documents/Projects/.env')
 
+#totp from shoonya dashboard security totp section
+token = os.getenv('totp')
+otp = pyotp.TOTP(token).now()
+
 #os.getenv() will fetch values from .env file 
 #credentials 
 uid     = os.getenv('userid')
 pwd     = os.getenv('password')
-factor2 = <2nd factor>
-vc      = os.getenv('vendor_key')
+factor2 = os.getenv('totp')
+vc      = otp
 app_key = os.getenv('api_key')
 imei    = <imei>
 
