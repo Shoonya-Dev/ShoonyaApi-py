@@ -47,6 +47,10 @@ Holdings and Limits
 - [get_positions](#md-get_positions)
 - [get_limits](#md-get_limits)
 
+Calculators
+- [span_calculator](#md-span_calculator)
+- [get_option_greek](#md-get_option_greek)
+
 Websocket API
 - [start_websocket](#md-start_websocket)
 - [subscribe](#md-subscribe)
@@ -1175,6 +1179,125 @@ Sample Failure Response :
 }
 Market Info
 
+
+#### <a name="md-span_calculator"></a> span_calculator(actid,positionlist)
+This calculates the margin requirement for a list of input positions.
+
+Example: 
+
+```
+ret = api.span_calculator(actid,positionlist)
+```
+Request Details :
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+|actid*||Any Account id, preferably actual account id if sending from post login screen.|
+|pos*||Array of json objects. (object fields given in below table)|
+
+Position structure as follows:
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+| prd | C / M / H  | Product | 
+|exch|NFO, CDS, MCX ...|Exchange|
+|instname|FUTSTK, FUTIDX, OPTSTK, FUTCUR...|Instrument name|
+|symname|USDINR, ACC, ABB,NIFTY.. |Symbol name|
+|exd|29-DEC-2022|DD-MMM-YYYY format|
+|optt|CE, PE|Option Type|
+|strprc|11900.00, 71.0025|Strike price|
+|buyqty||Buy Open Quantity|
+|sellqty||Sell Open Quantity|
+|netqty||Net traded quantity|
+
+
+Response Details :
+
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+|stat|Ok or Not_Ok|Market watch success or failure indication.|
+|span||Span value |
+|expo||IExposure margin|
+|span_trade||Span value ignoring input fields buyqty, sellqty|
+|expo_trade||Exposure margin ignoring input fields buyqty, sellqty|
+
+Sample Success Response :
+{
+    "request_time": "11:01:59 25-11-2022",
+    "stat": "Ok",
+    "span": "19416.00",
+    "expo": "4338.34",
+    "span_trade": "19416.00",
+    "expo_trade": "4338.34"
+}
+
+
+#### <a name="md-get_option_greek"></a>get_option_greek(expiredate,StrikePrice,SpotPrice,InitRate,Volatility,OptionType)
+Options greeeks computed the delta, thetha, vega , rho values.
+
+Example: 
+
+```
+ret = api.option_greek(expiredate ='24-NOV-2022',StrikePrice='150',SpotPrice  = '200',InitRate  = '100',Volatility = '10',OptionType='5')
+```
+Request Details :
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+|exd*||Expiry Date|
+|strprc*||Strike Price |
+|sptprc*||Spot Price|
+|int_rate*||Init Rate|
+|volatility*||Volatility|
+|optt||Option Type|
+
+Response Details :
+
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+|stat|Ok or Not_Ok|success or failure indication.|
+|request_time||This will be present only in a successful response.|
+|cal_price||Cal Price|
+|put_price||Put Price|
+|cal_delta||Cal Delta|
+|put_delta||Put Delta|
+|cal_gamma||Cal Gamma|
+|put_gamma||Put Gamma|
+|cal_theta||Cal Theta|
+|put_theta||Put Theta|
+|cal_delta||Cal Delta|
+|cal_rho||Cal Rho|
+|put_rho||Put Rho|
+|cal_vego||Cal Vego|
+|put_vego||Put Vego|
+
+Sample Success Response :
+ {
+"request_time":"17:22:58 28-07-2021",
+"stat":"OK",
+"cal_price":"1441",
+"put_price":"0.417071",
+"cal_delta":"0.997304",
+"put_delta":"-0.002696",
+"cal_gamma":"0.000001",
+"put_gamma":"0.000001",
+"cal_theta":"-31.535015",
+"put_theta":"-31.401346",
+"cal_rho":"0.000119",
+"put_rho":"-0.016590",
+"cal_vego":"0.006307",
+put_vego":"0.006307"
+  }
+
+Sample Failure Response :
+{
+ "stat":"Not_Ok",
+ "emsg":"Invalid Input :  jData is Missing."
+}
+
+
 #### <a name="md-scripmasters"></a> scripmasters:
 
 The scrip masters can be downloaded from the following links
@@ -1750,6 +1873,66 @@ Sample Failure Response :
      "stat":"Not_Ok",
      "emsg":"Session Expired : Invalid Session Key"
 }
+
+
+#### <a name="md-get_daily_price_series"></a>get_daily_price_series(Symbol name, From date, To date):
+gets the chart date for the symbol
+
+Example:
+```
+ret =api.get_daily_price_series(exchange="NSE",tradingsymbol="PAYTM-EQ",startdate="457401600",enddate="480556800")
+```
+Request Details :
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+|sym*||Symbol name|
+|from*||From date|
+|to*||To date |
+
+Response Details :
+
+|Json Fields|Possible value|Description|
+| --- | --- | ---|
+|stat|Ok|TPData success indication.|
+|time||DD/MM/CCYY hh:mm:ss|
+|into||Interval open|
+|inth||Interval high|
+|intl||Interval low|
+|intc||Interval close|
+|ssboe||Date,Seconds in 1970 format|
+|intv||Interval volume|
+
+Sample Success Response :
+[
+  "{
+       \"time\":\"21-SEP-2022\",
+       \"into\":\"2496.75\",
+       \"inth\":\"2533.00\",
+       \"intl\":\"2495.00\", 
+       \"intc\":\"2509.75\",
+       \"ssboe\":\"1663718400\",
+       \"intv\":\"4249172.00\"
+   }",
+ "{
+       \"time\":\"15-SEP-2022\",
+       \"into\":\"2583.00\",
+       \"inth\":\"2603.55\",
+       \"intl\":\"2556.75\",
+       \"intc\":\"2562.70\", 
+       \"ssboe\":\"1663200000\",
+       \"intv\":\"4783723.00\"
+  }",
+ "{ 	
+       \"time\":\"28-JUN-2021\",
+       \"into\":\"2122.00\",
+       \"inth\":\"2126.50\", 
+       \"intl\":\"2081.00\", 
+       \"intc\":\"2086.00\", 
+       \"ssboe\":\"1624838400\",
+        \"intv\":\"9357852.00\"
+  }"
+]
 
 
 #### <a name="md-get_optionchain"></a> get_option_chain(exchange, tradingsymbol, strikeprice, count):
