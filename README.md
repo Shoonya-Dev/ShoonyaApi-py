@@ -5,7 +5,7 @@ Api used to connect to Shoonya OMS.
 This is a python wrapper or connector to the RestAPI and websocket of Shoonya. 
 
 More details are found here
-https://www.finvasia.com/api-documentation
+https://www.shoonya.com/api-documentation
 
 ****
 
@@ -1302,15 +1302,15 @@ Sample Failure Response :
 
 The scrip masters can be downloaded from the following links
 
-https://shoonya.finvasia.com/NSE_symbols.txt.zip
+https://api.shoonya.com/NSE_symbols.txt.zip
 
-https://shoonya.finvasia.com/NFO_symbols.txt.zip
+https://api.shoonya.com/NFO_symbols.txt.zip
 
-https://shoonya.finvasia.com/CDS_symbols.txt.zip
+https://api.shoonya.com/CDS_symbols.txt.zip
 
-https://shoonya.finvasia.com/MCX_symbols.txt.zip
+https://api.shoonya.com/MCX_symbols.txt.zip
 
-https://shoonya.finvasia.com/BSE_symbols.txt.zip
+https://api.shoonya.com/BSE_symbols.txt.zip
 
 example is provided in test/test_download_masters.py 
 
@@ -2463,7 +2463,7 @@ while(feed_opened==False):
 
 ## Contact Us
 
-For any queries, feel free to reach us, email at apisupport@finvasia.in or call at 0172-4740000
+For any queries, feel free to reach us, email at apisupport@shoonya.com or call at 0172-4740000
 & also Just visit our website there is a Live chat option.
 
 ****
