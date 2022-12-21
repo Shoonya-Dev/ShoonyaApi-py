@@ -17,6 +17,6 @@ with open('/home/ubuntu/Desktop/Noren/NorenApi-Py-main/cred.yml') as f:
 
 ret = api.login(userid = cred['user'], password = cred['pwd'], twoFA=cred['factor2'], vendor_code=cred['vc'], api_secret=cred['apikey'], imei=cred['imei'])
 
-ret = api.option_greek(expiredate ='24-NOV-2022',StrikePrice='150',SpotPrice  = '200',InitRate  = '100',Volatility = '10',OptionType='5')
+ret = api.option_greek(expiredate ='24-NOV-2022',StrikePrice='150',SpotPrice  = '200',InterestRate  = '100',Volatility = '10',OptionType='5')
 
 print(ret)
