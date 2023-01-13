@@ -1966,6 +1966,7 @@ the response is as follows,
 | ls | ```string``` | False | Lot Size |
 
 #### <a name="md-start_websocket"></a> start_websocket()
+Note: Please ensure that only a single web-socket connection is started. Opening multiple web-socket connections is not supported by the API.
 starts the websocket, WebSocket feed has 2 types of ticks( t=touchline d=depth)and 2 stages (k=acknowledgement, f=further change in tick). 
 
 | Param | Type | Optional |Description |
