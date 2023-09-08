@@ -69,7 +69,7 @@ Example:
 #credentials
 user    = <uid>
 pwd     = <password>
-factor2 = <2nd factor>
+factor2 = <OTP/TOTP>
 vc      = <vendor code>
 app_key = <API key>
 imei    = <imei>
@@ -85,7 +85,7 @@ Request Details :
 |pwd*||Sha256 of the user entered password.|
 |factor2*||OTP or TOTP as entered by the user. (User Needs to be generated from the Shoonya app)|
 |vc*||Vendor code provided by noren team, along with connection URLs|
-|appkey*||Sha256 Encryption with the format of Example (uid Single Pipeline API key) When you have created the encryption key all must be without spaces.|
+|appkey*||Prism Generated API key|
 |imei*||Send mac if users logs in for desktop, imei is from mobile|
 |addldivinf||Optional field, Value must be in below format:|iOS - iosInfo.utsname.machine - iosInfo.systemVersion|Android - androidInfo.model - androidInfo.version|examples:|iOS - iPhone 8.0 - 9.0|Android - Moto G - 9 PKQ1.181203.01|
 |ipaddr||Optional field|
@@ -2224,7 +2224,7 @@ api = ShoonyaApiPy()
 #credentials
 user        = '< user id>'
 u_pwd       = '< password >'
-factor2     = 'second factor'
+factor2     = 'second factor
 vc          = 'vendor code'
 app_key     = 'API key'
 imei        = 'uniq identifier'
@@ -2464,8 +2464,8 @@ while(feed_opened==False):
 
 ## Contact Us
 
-For any queries, feel free to reach us, email at apisupport@shoonya.com or call at 0172-4740000
-& also Just visit our website there is a Live chat option.
+For any queries, feel free to reach us, by email at apisupport@shoonya.com or call at 0172-4740000
+& Also Just visit our website there is a Live chat option.
 
 ****
 ## Author
