@@ -82,7 +82,7 @@ Request Details :
 | --- | --- | ---|
 |apkversion*||Application version.For Ex. 1.0.0|
 |uid*||User Id of the login user|
-|pwd*||Sha256 of the user entered password.|
+|pwd*||Shoonya login password.|
 |factor2*||OTP or TOTP as entered by the user. (User Needs to be generated from the Shoonya app)|
 |vc*||Vendor code provided by noren team, along with connection URLs|
 |appkey*||Prism Generated API key|
