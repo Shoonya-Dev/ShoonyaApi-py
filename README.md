@@ -1312,9 +1312,11 @@ https://api.shoonya.com/MCX_symbols.txt.zip
 
 https://api.shoonya.com/BSE_symbols.txt.zip
 
+https://api.shoonya.com/BFO_symbols.txt.zip
+
 example is provided in test/test_download_masters.py 
 
-##Since this is a huge file, users are recommended to download once a day and store it locally.
+##Since this is a huge file, users are recommended to download it once a day and store it locally.
 
 
 #### <a name="md-searchscrip"></a> searchscrip(exchange, searchtext):
