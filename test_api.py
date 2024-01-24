@@ -16,7 +16,7 @@ app_key = <secret key>
 imei    = <imei>
 
 #make the api call
-ret = api.login(userid=uid, password=pwd, twoFA=factor2, vendor_code=vc, api_secret=app_key, imei=imei)
+ret = api.login(userid=user, password=pwd, twoFA=factor2, vendor_code=vc, api_secret=app_key, imei=imei)
 
 print(ret)
 
