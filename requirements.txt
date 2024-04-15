@@ -1,5 +1,1 @@
-requests
-websocket_client
-./dist/NorenRestApiPy-0.0.28-py2.py3-none-any.whl
-pandas
-pyyaml
+./dist/NorenRestApi-0.0.28-py2.py3-none-any.whl
