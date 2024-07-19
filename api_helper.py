@@ -38,8 +38,10 @@ def get_time(time_string):
 
 
 class ShoonyaApiPy(NorenApi):
-    def __init__(self):
-        NorenApi.__init__(self, host='https://api.shoonya.com/NorenWClientTP/', websocket='wss://api.shoonya.com/NorenWSTP/')        
+    def __init__(self, eodhost='https://api.shoonya.com/NorenWClientTP/'):
+        NorenApi.__init__(self, host='https://api.shoonya.com/NorenWClientTP/', 
+                          websocket='wss://api.shoonya.com/NorenWSTP/',
+                          eodhost=eodhost)
         global api
         api = self
 
