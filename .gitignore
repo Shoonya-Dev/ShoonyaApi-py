@@ -1,5 +1,5 @@
+dist
+*.pyc
 __pycache__
-venv
 cred.yml
-
-
+option_chain.xlsx
